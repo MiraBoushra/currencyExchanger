@@ -1,0 +1,74 @@
+<div class="homeContainer">
+  <h3>Currency Exchanger</h3>
+  <div class="col-md-12 homeContainer__details">
+    <div class="homeContainer__details__display">
+      <div class="col-md-2">
+        <p>Amount</p>
+        <input type="number" class="form-control" [(ngModel)]="amount" />
+      </div>
+      <div class="col-md-9" style="margin-left: 10%;">
+        <div class="homeContainer__details__display__selection col-md-12">
+          <div class="col-md-4 col-sm-12">
+            <span>
+              <p>From</p>
+            </span>
+            <mat-form-field >
+              <mat-select [(ngModel)]="fromValue" (selectionChange)="fromValueChanged()">
+                <mat-option
+                  *ngFor="let currencyName of currencyList"
+                  [value]="currencyName"
+                  >{{ currencyName }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div
+            class="homeContainer__details__display__selection__arrow col-md-3"
+          >
+            <button
+              (click)="swapCurrency($event)"
+              type="button"
+              class="btn btn-ligh"
+            >
+              &#10231;
+            </button>
+          </div>
+  
+          <div class="col-md-4 col-sm-12">
+            <span>
+              <p>To</p>
+            </span>
+            <mat-form-field>
+              <mat-select [(ngModel)]="toValue">
+                <mat-option
+                  *ngFor="let currencyName of currencyList"
+                  [value]="currencyName"
+                  >{{ currencyName }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <button
+          (click)="convertSelection()"
+          type="button"
+          class="btn btn-primary col-md-10 homeContainer__details__convertBtn"
+        >
+          Convert
+        </button>
+      </div>
+    </div>
+  
+    <div class="col-md-12 homeContainer__details__display" style="align-items: center;">
+      <div class="col-md-3 ">
+        <input [(ngModel)]="exchangeDetailsText" disabled="true" />
+      </div>
+      <div class="col-md-9 homeContainer__details__display__detailsBlock">
+        <input [(ngModel)]="convertedResult" disabled="true" class="homeContainer__details__display__result"/>
+        <a routerLink="/details"><button class="btn btn-primary" >More Details</button></a>
+      </div>
+    </div>
+  </div>
+  <div >
+  <app-grid [passedFromValue]="valueOfFrom" [passedCurrencies]="selectedCurrencies" [passedAmount]="amount"></app-grid></div>
+</div>

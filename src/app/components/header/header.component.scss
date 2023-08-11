@@ -1,0 +1,30 @@
+.headerContainer {
+  border: 1px solid white;
+  min-height: 70px;
+  display: flex;
+  margin: auto;
+  margin-top: 10px;
+  align-items: center;
+
+  span {
+      align-self: center;
+
+      img {
+          max-width: 90px;
+          max-height: 90px;
+      }
+  }
+
+
+  &__buttonContainer {
+      text-align: end;
+
+      button {
+          background-color: black;
+          color: white;
+          border-block-color: white;
+          margin: 0 10px;
+      }
+
+  }
+}
